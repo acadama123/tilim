@@ -1,0 +1,30 @@
+get_coordinates.py -> split_images.py -> remove_extra_img.py -> plot_boundary.py
+get_coordinates.py:
+        1. Get the county coordinates from the border shapefile
+        2. Form a rectangular geometry
+        3. Send a request to the GIS server for all raster images that are partly
+           or fully contained within the rectangular geometry
+                The raster images cover a large area
+        4. Download all the image rasters and name each according to its
+           rectangular bounds (coordinate values).
+split_images.py
+        1. Get the list of downloaded raster images
+        2. For each raster image, determine the rectangular pixel bounds of the
+           299x299 images that we can divide the raster image into.
+        3. Crop the raster images using the determined pixel bounds into 299x299
+           images.
+        4. Store the 299x299 images and name each by its rectangular bounds
+           (coordinate values).
+remove_extra_img.py
+        1. Get the county border from the border shapefile
+        2. For each 299x299 image, form a rectangular Polygon based on the image's
+           rectangular bounds
+        3. Use the image's rectangular Polygon to determine whether the county
+           border overlaps or contains the image or not.
+                If not, delete the image.
+plot_boundary.py
+        1. Get the coordinates from the border shapefile
+        2. Form a rectangular geometry
+        3. Form a Polygon that includes the bounds of each remaining image to
+           form a covered area.
+        4. Plot the covered area on top of the county's rectangular geometry.

@@ -1,4 +1,4 @@
 # tilim
 
 ## Required packages:
-`geopandas`, 
+`geopandas`, `PIL`, `requests` 

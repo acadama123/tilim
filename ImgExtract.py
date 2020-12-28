@@ -83,7 +83,7 @@ def main():
     shapefilePath = argv[1]
     boundaryDF = gpd.read_file(shapefilePath)
     # Change the boundary's coordinate system to the WGS84 system
-    # so we can work with latitudianland longitudinal values.
+    # so we can work with latitudinal and longitudinal values.
     # The EPSG value for WGS84 is 4326.
     boundaryDF = boundaryDF.to_crs(epsg=4326)
     boundaryList = extract_geometries(boundaryDF)
